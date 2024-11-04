@@ -93,7 +93,7 @@ jobs:
         git push
         
         # Capture the new commit SHA
-        echo "::set-output name=commit_sha::$(git rev-parse HEAD)"
+        echo "commit_sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
       env:
         # Use the GitHub-provided token to authenticate the push
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -97,6 +97,7 @@ def process_files(input_folder="linije", output_folder="timetables"):
 
                     # Convert the JSON data to markdown format
                     markdown_content = convert_to_markdown(line_data)
+                    markdown_content += "Povratak na [Linije](#linije)\n"
                     line_num = line_data.get("broj", "unknown")
                     
                     # Save the markdown content to a file in the output folder
@@ -110,7 +111,7 @@ def process_files(input_folder="linije", output_folder="timetables"):
         
         # Write a timestamp at the beginning of the file
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        combined.write(f"# Zadnja izmjena: {timestamp}\n\n")
+        combined.write(f"### Zadnja izmjena: {timestamp}\n\n")
 
         combined.write("## Linije\n\n")
         # Generate the TOC with links to headers
