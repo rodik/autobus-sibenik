@@ -73,7 +73,7 @@ jobs:
         git add docs/index.md
 
         # Get build information
-        RUN_ID="${GITHUB_RUN_ID}"           # Unique run ID for this workflow
+        RUN_ID="${GITHUB_RUN_NUMBER}"       # auto-incrementing number unique to each workflow run within the repository
         CURRENT_DATE=$(date +"%Y-%m-%d")    # Current date in yyyy-mm-dd format
         
         # Create a commit message with run ID and date

@@ -2,7 +2,7 @@
 
 ## ponedjeljak-subota
 
-AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
+| AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
 |------|------|------|------|------|------|------|------|------|------|------|
 | 06:50 | 06:52 | 06:55 | 06:56 | 06:57 | 07:01 | 07:02 | 07:07 | 07:10 | 07:14 | 07:15 |
 | 07:50 | 07:52 | 07:55 | 07:56 | 07:57 | 08:01 | 08:02 | 08:07 | 08:10 | 08:14 | 08:15 |
@@ -21,7 +21,7 @@ AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezališt
 
 ## nedjelja
 
-AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
+| AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
 |------|------|------|------|------|------|------|------|------|------|------|
 | 07:40 | 07:42 | 07:45 | 07:46 | 07:47 | 07:51 | 07:52 | 07:57 | 08:00 | 08:04 | 08:05 |
 | 08:40 | 08:42 | 08:45 | 08:46 | 08:47 | 08:51 | 08:52 | 08:57 | 09:00 | 09:04 | 09:05 |
@@ -42,7 +42,7 @@ AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezališt
 
 ## ponedjeljak-subota
 
-Brodarica | Brodarica TZ | Maratuša A | Rezalište A | TLM A | Put Egera A | Križ A | Baldekin A | Bolnica | AK |
+| Brodarica | Brodarica TZ | Maratuša A | Rezalište A | TLM A | Put Egera A | Križ A | Baldekin A | Bolnica | AK |
 |------|------|------|------|------|------|------|------|------|------|
 | 06:20 | 06:21 | 06:23 | 06:25 | 06:29 | 06:30 | 06:37 | 06:38 | 06:39 | 06:42 |
 | 07:20 | 07:21 | 07:23 | 07:25 | 07:29 | 07:30 | 07:37 | 07:38 | 07:39 | 07:42 |
@@ -60,7 +60,7 @@ Brodarica | Brodarica TZ | Maratuša A | Rezalište A | TLM A | Put Egera A | Kr
 
 ## nedjelja
 
-Brodarica | Brodarica TZ | Maratuša A | Rezalište A | TLM A | Put Egera A | Križ A | Baldekin A | Bolnica | AK |
+| Brodarica | Brodarica TZ | Maratuša A | Rezalište A | TLM A | Put Egera A | Križ A | Baldekin A | Bolnica | AK |
 |------|------|------|------|------|------|------|------|------|------|
 | 07:10 | 07:11 | 07:13 | 07:15 | 07:19 | 07:20 | 07:27 | 07:28 | 07:29 | 07:32 |
 | 08:10 | 08:11 | 08:13 | 08:15 | 08:19 | 08:20 | 08:27 | 08:28 | 08:29 | 08:32 |

@@ -2,7 +2,7 @@
 
 ## ponedjeljak-subota
 
-AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
+| AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
 |------|------|------|------|------|------|------|------|------|------|------|
 | 06:50 | 06:52 | 06:55 | 06:56 | 06:57 | 07:01 | 07:02 | 07:07 | 07:10 | 07:14 | 07:15 |
 | 07:50 | 07:52 | 07:55 | 07:56 | 07:57 | 08:01 | 08:02 | 08:07 | 08:10 | 08:14 | 08:15 |
@@ -21,7 +21,7 @@ AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezališt
 
 ## nedjelja
 
-AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
+| AK | Tržnica | Baldekin B | Križ B | Bioci B | Put Egera B | TLM B | Rezalište B | Maratuša B | Rešačka | Brodarica |
 |------|------|------|------|------|------|------|------|------|------|------|
 | 07:40 | 07:42 | 07:45 | 07:46 | 07:47 | 07:51 | 07:52 | 07:57 | 08:00 | 08:04 | 08:05 |
 | 08:40 | 08:42 | 08:45 | 08:46 | 08:47 | 08:51 | 08:52 | 08:57 | 09:00 | 09:04 | 09:05 |
