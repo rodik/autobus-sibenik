@@ -1,0 +1,48 @@
+{
+    "broj": 4,
+    "linija": "Brodarica - Autobusni kolodvor",
+    "smjer": "Autobusni kolodvor",
+    "stanice": {
+        "Brodarica": 0,
+        "Brodarica TZ": 1,
+        "Maratuša A": 2,
+        "Rezalište A": 2,
+        "TLM A": 4,
+        "Put Egera A": 1,
+        "Križ A": 7,
+        "Baldekin A": 1,
+        "Bolnica": 1,
+        "AK": 3
+    },
+    "polasci": {
+        "ponedjeljak-subota": [
+            "06:20",
+            "07:20",
+            "08:20",
+            "09:20",
+            "10:20",
+            "11:20",
+            "12:20",
+            "13:20",
+            "14:40",
+            "15:40",
+            "16:40",
+            "17:40",
+            "18:40"
+        ],
+        "nedjelja": [
+            "07:10",
+            "08:10",
+            "09:10",
+            "10:10",
+            "11:10",
+            "12:10",
+            "13:10",
+            "14:10",
+            "15:10",
+            "16:10",
+            "17:10",
+            "18:10"
+        ]
+    }
+}

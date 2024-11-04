@@ -1,0 +1,91 @@
+# Workflow Name: Napravi raspored
+# This GitHub Actions workflow triggers on every push to the `main` branch. 
+# It runs a Python script to convert bus schedule JSON files into markdown files 
+# and commits the generated markdown files back to the repository.
+
+name: Napravi raspored
+
+on:
+  # Trigger the workflow on push events to the `main` branch
+  push:
+    branches:
+      - main
+
+jobs:
+  # Define a job to generate timetables
+  napravi_raspored:
+    # Specify the operating system/environment for the job
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout repository
+      # Use the official GitHub Action to check out the code in the repository
+      uses: actions/checkout@v3
+      # This step allows subsequent steps to access files in the repository, 
+      # including the Python script and JSON files.
+
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      # Use the official GitHub Action to set up a Python environment
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'  # Specify the version of Python to use
+      # This step ensures the runner has the specified Python version installed.
+
+    # Step 3: Install Python dependencies
+    - name: Install dependencies
+      # Upgrade pip, and install any dependencies required by the script.
+      # If you add dependencies in the future, list them here.
+      run: |
+        python -m pip install --upgrade pip
+      # Currently, no additional packages are installed. If you need packages like `pandas`,
+      # add `pip install <package_name>` in this section.
+
+    # Step 4: Run the conversion script
+    - name: Run conversion script
+      run: |
+        python obrada.py
+      # This step runs the Python script (`obrada.py`) which:
+      # - Processes all JSON files in a specific directory.
+      # - Converts each JSON file to a markdown file with the correct timetable format.
+      # - Saves the generated markdown files in a designated output folder (e.g., `timetables`).
+
+    - name: Prepare markdown file for GitHub Pages
+      run: |
+        # Ensure the docs directory exists
+        mkdir -p docs
+        
+        # Move and rename Combined_Timetable.md to docs/index.md
+        mv timetables/Combined_Timetable.md docs/index.md
+            
+    # Step 5: Commit and push generated markdown files to the repository
+    - name: Commit and push generated timetables
+      run: |
+        # Configure Git with a default user name and email for the commit
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Stage the generated markdown file in docs directory for GitHub Pages
+        git add docs/index.md
+
+        # Get build information
+        RUN_ID="${GITHUB_RUN_ID}"           # Unique run ID for this workflow
+        CURRENT_DATE=$(date +"%Y-%m-%d")    # Current date in yyyy-mm-dd format
+        
+        # Create a commit message with run ID and date
+        git commit -m "raspored verzija - ${RUN_ID}, datum ${CURRENT_DATE}"
+        
+        # Push the changes back to the `main` branch
+        git push
+      env:
+        # Use the GitHub-provided token to authenticate the push
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # This step stages, commits, and pushes the updated markdown files back to the repository.
+      # The `GITHUB_TOKEN` provided by GitHub allows the action to authenticate without 
+      # requiring additional setup.
+
+      # Summary:
+      # - The workflow will update the markdown files in the repository with the latest schedules
+      #   each time there is a push to the `main` branch.
+      # - This process ensures the timetables are always up-to-date.
