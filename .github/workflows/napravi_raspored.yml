@@ -2,8 +2,9 @@
 # This GitHub Actions workflow triggers on every push to the `main` branch. 
 # It runs a Python script to convert bus schedule JSON files into markdown files 
 # and commits the generated markdown files back to the repository.
+# Finally, it updates the public GitHub Page: rodik.github.io/autobus-sibenik
 
-name: Napravi raspored
+name: Napravi novi raspored
 
 on:
   # Trigger the workflow on push events to the `main` branch
@@ -13,10 +14,14 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
   
 jobs:
-  # Define a job to generate timetables
   napravi_raspored:
+    # Summary:
+        # The job will regenrate the bus timetable markdown
+
     # Specify the operating system/environment for the job
     runs-on: ubuntu-latest
 
@@ -54,6 +59,7 @@ jobs:
       # - Converts each JSON file to a markdown file with the correct timetable format.
       # - Saves the generated markdown files in a designated output folder (e.g., `timetables`).
 
+    # Step 5: Create index.md for GitHub Pages
     - name: Prepare markdown file for GitHub Pages
       run: |
         # Ensure the docs directory exists
@@ -62,15 +68,15 @@ jobs:
         # Move and rename Combined_Timetable.md to docs/index.md
         mv timetables/Combined_Timetable.md docs/index.md
             
-    # Step 5: Commit and push generated markdown files to the repository
+    # Step 6: Commit and push generated index.md file to the repository
     - name: Commit and push generated timetables
       run: |
         # Configure Git with a default user name and email for the commit
         git config --local user.name "github-actions[bot]"
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         
-        # Stage the generated markdown file in docs directory for GitHub Pages
-        git add docs/index.md
+        # Stage the changes
+        git add .
 
         # Get build information
         RUN_ID="${GITHUB_RUN_NUMBER}"       # auto-incrementing number unique to each workflow run within the repository
@@ -88,7 +94,22 @@ jobs:
       # The `GITHUB_TOKEN` provided by GitHub allows the action to authenticate without 
       # requiring additional setup.
 
-      # Summary:
-      # - The workflow will update the markdown files in the repository with the latest schedules
-      #   each time there is a push to the `main` branch.
-      # - This process ensures the timetables are always up-to-date.
+
+  deploy:
+    needs: napravi_raspored
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Setup Pages
+          uses: actions/configure-pages@v5
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v3
+          with:
+            path: 'docs/'
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4
