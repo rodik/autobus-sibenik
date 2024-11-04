@@ -1,7 +1,6 @@
 {
     "broj": 4,
     "linija": "Brodarica - Autobusni kolodvor",
-    "smjer": "Autobusni kolodvor",
     "stanice": {
         "Brodarica": 0,
         "Brodarica TZ": 1,

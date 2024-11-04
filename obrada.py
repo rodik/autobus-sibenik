@@ -47,7 +47,6 @@ def convert_to_markdown(line_data):
     # Retrieve line number, name, and direction for markdown header
     line_num = line_data.get("broj", "")
     line_name = line_data.get("linija", "")
-    direction = line_data.get("smjer", "")
     stops = line_data.get("stanice", {})
     departures = line_data.get("polasci", {})
 
@@ -101,7 +100,7 @@ def process_files(input_folder="linije", output_folder="timetables"):
                     line_num = line_data.get("broj", "unknown")
                     
                     # Save the markdown content to a file in the output folder
-                    output_file = os.path.join(output_folder, file.replace(".json", ".md"))
+                    output_file = os.path.join(output_folder, str(line_num).zfill(3) + '_' + file.replace(".json", ".md"))
                     with open(output_file, "w") as md_file:
                         md_file.write(markdown_content)
 

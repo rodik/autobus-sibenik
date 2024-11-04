@@ -9,6 +9,6 @@ Postojeći [raspored](https://www.gradski-parking.hr/stranice/javni-gradski-prij
 [Tablični prikaz](https://rodik.github.io/autobus-sibenik/) vremena po svim stanicama.
 
 ## Izmjene voznog reda
-Podatke je dovoljno osvježiti u odgovarajućem JSON fajlu (npr. [brodarica__ak](./linije/gradske/04_ak_brodarica/brodarica__ak.json) i napraviti Pull Request u `main` branch. Stranica s tablicom će se automatski osvježiti i prikazivati novi raspored.
+Podatke je dovoljno osvježiti u odgovarajućem JSON fajlu (npr. [B__brodarica__ak](./linije/gradske/04_ak_brodarica/B__brodarica__ak.json) i napraviti Pull Request u `main` branch. Stranica s tablicom će se automatski osvježiti i prikazivati novi raspored.
 
 Izmjenu možete [napraviti sami](CONTRIBUTING.md). Ako ne znate sami, napravite novi [issue](https://github.com/rodik/autobus-sibenik/issues) s kratkim opisom izmjene voznog reda. 

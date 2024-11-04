@@ -1,7 +1,6 @@
 {
     "broj": 4,
     "linija": "Autobusni kolodvor - Brodarica",
-    "smjer": "Brodarica",
     "stanice": {
         "AK": 0,
         "Tržnica": 2,
