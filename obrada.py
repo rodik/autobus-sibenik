@@ -108,6 +108,21 @@ def process_files(input_folder="linije", output_folder="timetables"):
     # Combine all individual markdown files into a single file
     combined_file = os.path.join(output_folder, "Combined_Timetable.md")
     with open(combined_file, "w") as combined:
+        
+        # Write a timestamp at the beginning of the file
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        combined.write(f"# Zadnja izmjena: {timestamp}\n\n")
+
+        # Generate and write a Table of Contents (TOC) with links
+        combined.write("## Linije\n\n")
+        for md_file in sorted(os.listdir(output_folder)):
+            if md_file.endswith(".md") and md_file != "Combined_Timetable.md":
+                # Create a link to each file in the TOC
+                file_name = os.path.splitext(md_file)[0]  # Remove the .md extension
+                combined.write(f"- [{file_name}](./{md_file})\n")
+        combined.write("\n---\n\n")  # Divider after TOC
+
+        # Append the content of each markdown file
         for md_file in sorted(os.listdir(output_folder)):
             if md_file.endswith(".md") and md_file != "Combined_Timetable.md":
                 # Read each markdown file and append its content to the combined file

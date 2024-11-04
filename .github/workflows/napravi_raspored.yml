@@ -76,7 +76,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         
         # Stage the changes
-        git add .
+        git add docs/index.md
 
         # Get build information
         RUN_ID="${GITHUB_RUN_NUMBER}"       # auto-incrementing number unique to each workflow run within the repository
