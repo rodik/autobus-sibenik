@@ -60,7 +60,7 @@ def convert_to_markdown(line_data):
         md_content += f"## {day_type}\n\n"
 
         # Construct the markdown table header with stop names
-        headers = " | ".join(stops.keys()) + " |\n"
+        headers = "| " + " | ".join(stops.keys()) + " |\n"
         separator = "|" + "------|" * (len(stops)) + "\n"
         md_content += headers + separator
 
