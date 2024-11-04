@@ -67,8 +67,8 @@ jobs:
         # Ensure the docs directory exists
         mkdir -p docs
         
-        # Move and rename timetables/Combined_Timetable.md to docs folder
-        mv timetables/Combined_Timetable.md docs/index.md
+        # Move and rename timetables/sve_tablice.md to docs folder
+        mv timetables/sve_tablice.md docs/index.md
 
             
     # Step 6: Commit and push generated index.md file to the repository

@@ -61,14 +61,14 @@ def convert_to_markdown(line_data):
 
         # Construct the markdown table header with stop names
         headers = "| " + " | ".join(stops.keys()) + " |\n"
-        separator = "|" + "------|" * (len(stops)) + "\n"
+        separator = "|" + ":------:|" * (len(stops)) + "\n"
         md_content += headers + separator
 
         # Calculate full schedule (arrival times) for each departure time
         full_schedule = calculate_stop_times(times, stops)
         for schedule in full_schedule:
             # Each row in the table represents arrival times for one departure
-            row = "| " + " | ".join([time for _, time in schedule]) + " |\n"
+            row = "| **" + schedule[0][1] + "** | " + " | ".join([time for _, time in schedule[1:]]) + " |\n"
             md_content += row
 
         md_content += "\n"  # Add space between tables for readability
@@ -106,28 +106,36 @@ def process_files(input_folder="linije", output_folder="timetables"):
                         md_file.write(markdown_content)
 
     # Combine all individual markdown files into a single file
-    combined_file = os.path.join(output_folder, "Combined_Timetable.md")
+    combined_file = os.path.join(output_folder, "sve_tablice.md")
     with open(combined_file, "w") as combined:
         
         # Write a timestamp at the beginning of the file
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         combined.write(f"# Zadnja izmjena: {timestamp}\n\n")
 
-        # Generate and write a Table of Contents (TOC) with links
         combined.write("## Linije\n\n")
+        # Generate the TOC with links to headers
         for md_file in sorted(os.listdir(output_folder)):
-            if md_file.endswith(".md") and md_file != "Combined_Timetable.md":
-                # Create a link to each file in the TOC
-                file_name = os.path.splitext(md_file)[0]  # Remove the .md extension
-                combined.write(f"- [{file_name}](./{md_file})\n")
+            if md_file.endswith(".md") and md_file != "sve_tablice.md":
+                # Extract line number and line name from the markdown file name
+                with open(os.path.join(output_folder, md_file), "r") as f:
+                    first_line = f.readline().strip()  # Read the header line
+                    if first_line.startswith("# Linija"):
+                        header_text = first_line[2:].strip()  # Remove leading "# " to get the header text
+                        # Convert header text to a markdown linkable format
+                        # Replace spaces with hyphens and make it lowercase
+                        anchor_link = header_text.lower().replace(" ", "-").replace(":", "")
+                        combined.write(f"- [{header_text}](#{anchor_link})\n")
+
         combined.write("\n---\n\n")  # Divider after TOC
 
         # Append the content of each markdown file
         for md_file in sorted(os.listdir(output_folder)):
-            if md_file.endswith(".md") and md_file != "Combined_Timetable.md":
+            if md_file.endswith(".md") and md_file != "sve_tablice.md":
                 # Read each markdown file and append its content to the combined file
                 with open(os.path.join(output_folder, md_file), "r") as f:
                     combined.write(f.read() + "\n\n")
+
 
 if __name__ == "__main__":
     process_files()
