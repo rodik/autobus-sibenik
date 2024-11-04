@@ -52,12 +52,6 @@ jobs:
       # Currently, no additional packages are installed. If you need packages like `pandas`,
       # add `pip install <package_name>` in this section.
 
-    # Install pandoc
-    - name: Install pandoc
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pandoc
-
     # Step 4: Run the conversion script
     - name: Run conversion script
       run: |
@@ -70,14 +64,11 @@ jobs:
     # Step 5: Create index.md for GitHub Pages
     - name: Prepare markdown file for GitHub Pages
       run: |
-        # Convert md to html
-        pandoc timetables/Combined_Timetable.md -o timetables/index.html
-
         # Ensure the docs directory exists
         mkdir -p docs
         
-        # Move and timetables/index.html to docs folder
-        mv timetables/index.html docs/index.html
+        # Move and rename timetables/Combined_Timetable.md to docs folder
+        mv timetables/Combined_Timetable.md docs/index.md
 
             
     # Step 6: Commit and push generated index.md file to the repository
@@ -89,7 +80,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         
         # Stage the changes
-        git add docs/index.html
+        git add docs/index.md
 
         # Get build information
         RUN_ID="${GITHUB_RUN_NUMBER}"       # auto-incrementing number unique to each workflow run within the repository
@@ -126,10 +117,16 @@ jobs:
         - name: Setup Pages
           uses: actions/configure-pages@v5
 
+        # Run the Jekyll build process
+        - name: Build Jekyll site
+          uses: actions/jekyll-build-pages@v1
+          with:
+            source: "docs/"  # Define `docs` as the source folder
+
         - name: Upload artifact
           uses: actions/upload-pages-artifact@v3
           with:
-            path: 'docs/'
+            path: "_site"  # Jekyll outputs the site in the `_site` folder by default
             
         - name: Deploy to GitHub Pages
           id: deployment
