@@ -24,6 +24,8 @@ jobs:
 
     # Specify the operating system/environment for the job
     runs-on: ubuntu-latest
+    outputs:
+      new_commit_sha: ${{ steps.commit_changes.outputs.commit_sha }}
 
     steps:
     # Step 1: Check out the repository
@@ -80,6 +82,7 @@ jobs:
             
     # Step 6: Commit and push generated index.md file to the repository
     - name: Commit and push generated timetables
+      id: commit_changes
       run: |
         # Configure Git with a default user name and email for the commit
         git config --local user.name "github-actions[bot]"
@@ -97,6 +100,9 @@ jobs:
         
         # Push the changes back to the `main` branch
         git push
+        
+        # Capture the new commit SHA
+        echo "::set-output name=commit_sha::$(git rev-parse HEAD)"
       env:
         # Use the GitHub-provided token to authenticate the push
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -114,12 +120,17 @@ jobs:
     steps:
         - name: Checkout
           uses: actions/checkout@v4
+          with:
+            ref: ${{ needs.napravi_raspored.outputs.new_commit_sha }}  # Check out the specific SHA
+
         - name: Setup Pages
           uses: actions/configure-pages@v5
+
         - name: Upload artifact
           uses: actions/upload-pages-artifact@v3
           with:
             path: 'docs/'
+            
         - name: Deploy to GitHub Pages
           id: deployment
           uses: actions/deploy-pages@v4
