@@ -31,14 +31,14 @@ jobs:
     # Step 1: Check out the repository
     - name: Checkout repository
       # Use the official GitHub Action to check out the code in the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       # This step allows subsequent steps to access files in the repository, 
       # including the Python script and JSON files.
 
     # Step 2: Set up Python environment
     - name: Set up Python
       # Use the official GitHub Action to set up a Python environment
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'  # Specify the version of Python to use
       # This step ensures the runner has the specified Python version installed.
