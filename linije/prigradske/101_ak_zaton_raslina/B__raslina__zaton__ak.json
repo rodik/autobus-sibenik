@@ -1,0 +1,38 @@
+{
+    "broj": 101,
+    "linija": "Raslina - Zaton - Autobusni kolodvor",
+    "stanice": {
+        "Raslina": 0,
+        "Zaton Križ A": 3,
+        "Zaton A": 4,
+        "Put Vida A": 12,
+        "Meštrovićeva A": 1,
+        "ŠRC Ljubica A": 1,
+        "Bribirskih knezova A": 1,
+        "Građa A": 1,
+        "Poljana A": 1,
+        "AK": 1
+    },
+    "napomena": "",
+    "polasci": {
+        "ponedjeljak-petak": [
+            "6:05",
+            "7:15",
+            "11:00",
+            "13:15",
+            "14:50",
+            "16:00",
+            "20:45",
+            "21:45"
+        ],
+        "subota": [
+            "6:05",
+            "13:15",
+            "16:00"
+        ],
+        "nedjelja": [
+            "6:05",
+            "16:00"
+        ]
+    }
+}
