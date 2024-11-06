@@ -66,6 +66,18 @@ U odgovarajućem json-u napraviti izmjenu:
 }
 ```
 
+### Dodavanje napomene
+Napomena će se prikazati ispod naslova linije.
+```diff
+    "Rasadnik B": 2,
+        "Vidici - sv. Mara": 1
+    },
+-    "napomena": "",
++    "napomena": "Nedjeljom i praznikom iznimka XYZ ...",
+    "polasci": {
+        "ponedjeljak-petak": [
+            "6:15",
+```
 ## Coding Guidelines
 
 - Please follow our coding standards (include links to any style guides).

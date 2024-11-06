@@ -48,10 +48,15 @@ def convert_to_markdown(line_data):
     line_num = line_data.get("broj", "")
     line_name = line_data.get("linija", "")
     stops = line_data.get("stanice", {})
+    note = line_data.get("napomena", "")
     departures = line_data.get("polasci", {})
 
     # Initial header for the bus line
     md_content = f"# Linija {line_num}: {line_name}\n\n"
+
+    # Conditionally add the note if it exists and is not empty
+    if note:
+        md_content += f"**Napomena**: {note}\n\n"
 
     # Process each schedule type separately (e.g., "ponedjeljak-subota", "nedjelja")
     for day_type, times in departures.items():
